@@ -1,3 +1,5 @@
+package polimorfclass;
+
 public class Dancer { //Базовый класс
     private String name;
     private int age;

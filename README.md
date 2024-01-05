@@ -29,11 +29,11 @@ https://javarush.com/groups/posts/polimorfizm-v-java
 
 Базовый класс:
 
-public class Dancer {
+public class polimorfclass.Dancer {
     private String name;
     private int age;
 
-    public Dancer(String name, int age) {
+    public polimorfclass.Dancer(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -50,8 +50,8 @@ public class Dancer {
 
 В наследниках переопределите метод базового класса:
 
-public class ElectricBoogieDancer extends Dancer {
-    public ElectricBoogieDancer(String name, int age) {
+public class polimorfclass.ElectricBoogieDancer extends polimorfclass.Dancer {
+    public polimorfclass.ElectricBoogieDancer(String name, int age) {
         super(name, age);
     }
 // переопределение метода базового класса
@@ -61,9 +61,9 @@ public class ElectricBoogieDancer extends Dancer {
     }
 }
 
-public class BreakDankDancer extends Dancer{
+public class polimorfclass.BreakDankDancer extends polimorfclass.Dancer{
 
-    public BreakDankDancer(String name, int age) {
+    public polimorfclass.BreakDankDancer(String name, int age) {
         super(name, age);
     }
 // переопределение метода базового класса
@@ -75,16 +75,16 @@ public class BreakDankDancer extends Dancer{
 
 Пример полиморфизма в Java и использования объектов в программе:
 
-public class Main {
+public class polimorfclass.Main {
 
     public static void main(String[] args) {
-        Dancer dancer = new Dancer("Антон", 18);
+        polimorfclass.Dancer dancer = new polimorfclass.Dancer("Антон", 18);
 
-        Dancer breakDanceDancer = new BreakDankDancer("Алексей", 19);// восходящее преобразование к базовому типу
-        Dancer electricBoogieDancer = new ElectricBoogieDancer("Игорь", 20); // восходящее преобразование к базовому типу
+        polimorfclass.Dancer breakDanceDancer = new polimorfclass.BreakDankDancer("Алексей", 19);// восходящее преобразование к базовому типу
+        polimorfclass.Dancer electricBoogieDancer = new polimorfclass.ElectricBoogieDancer("Игорь", 20); // восходящее преобразование к базовому типу
 
-        List<Dancer> discotheque = Arrays.asList(dancer, breakDanceDancer, electricBoogieDancer);
-        for (Dancer d : discotheque) {
+        List<polimorfclass.Dancer> discotheque = Arrays.asList(dancer, breakDanceDancer, electricBoogieDancer);
+        for (polimorfclass.Dancer d : discotheque) {
             d.dance();// полиморфный вызов метода
         }
     }
@@ -92,16 +92,16 @@ public class Main {
 
 На коде метода main покажите, что в строках:
 
-Dancer breakDanceDancer = new BreakDankDancer("Алексей", 19);
-Dancer electricBoogieDancer = new ElectricBoogieDancer("Игорь", 20);
+polimorfclass.Dancer breakDanceDancer = new polimorfclass.BreakDankDancer("Алексей", 19);
+polimorfclass.Dancer electricBoogieDancer = new polimorfclass.ElectricBoogieDancer("Игорь", 20);
 
 мы объявили переменную типа суперкласса, а присвоили ей значение одного из наследников. Скорее всего, вас спросят, почему компилятор
 не будет «ругаться» на несоответствие типов, объявленных слева и справа от знака присваивания, ведь в Java строгая типизация. Поясните,
 что тут работает восходящее преобразование типов — ссылка на объект интерпретируется, как ссылка на базовый класс. Причем компилятор, 
 встретив в коде такую конструкцию, делает это автоматически и неявно.
 
-На основе кода примера можно показать, что тип класса, объявленный слева от знака присваивания Dancer, имеет несколько форм (типов),
-объявленных справа BreakDankDancer, ElectricBoogieDancer. Каждая из форм может иметь собственное уникальное поведение для общей функциональности,
+На основе кода примера можно показать, что тип класса, объявленный слева от знака присваивания polimorfclass.Dancer, имеет несколько форм (типов),
+объявленных справа polimorfclass.BreakDankDancer, polimorfclass.ElectricBoogieDancer. Каждая из форм может иметь собственное уникальное поведение для общей функциональности,
 определенной в суперклассе — метод dance. То есть метод, объявленный в суперклассе, может быть по-разному реализован в наследниках. 
 В данном случае мы имеем дело с переопределением метода, а это именно то, что создает многообразие форм (поведений). Увидеть это можно, запустив код метода main на выполнение:
 
@@ -111,18 +111,18 @@ Dancer electricBoogieDancer = new ElectricBoogieDancer("Игорь", 20);
 Я Алексей, мне 19 лет. Я танцую брейк-данс!
 Я Игорь, мне 20 лет. Я танцую электрик буги!
 
-Если не использовать переопределение в наследниках, то мы не получим различного поведения. Например, если для наших классов BreakDankDancer 
-и ElectricBoogieDancer закомментировать метод dance, то вывод программы будет таким:
+Если не использовать переопределение в наследниках, то мы не получим различного поведения. Например, если для наших классов polimorfclass.BreakDankDancer 
+и polimorfclass.ElectricBoogieDancer закомментировать метод dance, то вывод программы будет таким:
 
 Я Антон, мне 18 лет. Я танцую как все.
 Я Алексей, мне 19 лет. Я танцую как все.
 Я Игорь, мне 20 лет. Я танцую как все.
 
-а это значит, что создавать новые классы BreakDankDancer и ElectricBoogieDancer просто нет смысла.
+а это значит, что создавать новые классы polimorfclass.BreakDankDancer и polimorfclass.ElectricBoogieDancer просто нет смысла.
 
 А в чём же, собственно, проявляется принцип полиморфизма Java? Где спрятано использование объекта в программе без знания о его конкретном типе?
-В нашем примере — это вызов метода d.dance() на объекте d типа Dancer. Под полиморфизмом Java подразумевается то, что программе необязательно
-знать какого именно типа будет объект BreakDankDancer или ElectricBoogieDancer. Главное, что он — потомок класса Dancer.
+В нашем примере — это вызов метода d.dance() на объекте d типа polimorfclass.Dancer. Под полиморфизмом Java подразумевается то, что программе необязательно
+знать какого именно типа будет объект polimorfclass.BreakDankDancer или polimorfclass.ElectricBoogieDancer. Главное, что он — потомок класса polimorfclass.Dancer.
 
 И если рассуждать о потомках, следует заметить, что наследование в Java — это не только extends, но и implements. Тут самое время вспомнить,
 что в Java не поддерживается множественное наследование — каждый тип может иметь одного родителя (суперкласс) и неограниченное количество 
@@ -133,13 +133,13 @@ Dancer electricBoogieDancer = new ElectricBoogieDancer("Игорь", 20);
 
 Создадим интерфейс:
 
-public interface Swim {
+public interface polimorfinterface.Swim {
     void swim();
 }
 
 Для наглядности возьмем разные и не связанные между собой объекты и реализуем в них интерфейс:
 
-public class Human implements Swim {
+public class Human implements polimorfinterface.Swim {
     private String name;
     private int age;
 
@@ -160,7 +160,7 @@ public class Human implements Swim {
 
 }
 
-public class Fish implements Swim{
+public class Fish implements polimorfinterface.Swim{
     private String name;
 
     public Fish(String name) {
@@ -173,7 +173,7 @@ public class Fish implements Swim{
 
     }
 
-public class UBoat implements Swim {
+public class UBoat implements polimorfinterface.Swim {
 
     private int speed;
 
@@ -189,15 +189,15 @@ public class UBoat implements Swim {
 
 Метод main:
 
-public class Main {
+public class polimorfclass.Main {
 
     public static void main(String[] args) {
-        Swim human = new Human("Антон", 6);
-        Swim fish = new Fish("кит");
-        Swim boat = new UBoat(25);
+        polimorfinterface.Swim human = new Human("Антон", 6);
+        polimorfinterface.Swim fish = new Fish("кит");
+        polimorfinterface.Swim boat = new UBoat(25);
 
-        List<Swim> swimmers = Arrays.asList(human, fish, boat);
-        for (Swim s : swimmers) {
+        List<polimorfinterface.Swim> swimmers = Arrays.asList(human, fish, boat);
+        for (polimorfinterface.Swim s : swimmers) {
             s.swim();
         }
     }
@@ -208,7 +208,7 @@ public class Main {
 
 Изучив наш пример, интервьюер может спросить, почему при выполнении кода из main
 
-for (Swim s : swimmers) {
+for (polimorfinterface.Swim s : swimmers) {
             s.swim();
 }
 
@@ -218,7 +218,7 @@ for (Swim s : swimmers) {
 В Java по умолчанию используется позднее связывание (на стадии выполнения программы, а не во время компиляции, как в случае с ранним связыванием).
 Это значит, что при компиляции кода 
 
-for (Swim s : swimmers) {
+for (polimorfinterface.Swim s : swimmers) {
             s.swim();
 }
 
@@ -242,7 +242,7 @@ for (Swim s : swimmers) {
 
 Например:
 
-public interface Swim {
+public interface polimorfinterface.Swim {
     default void swim() {
         System.out.println("Просто плыву");
     }

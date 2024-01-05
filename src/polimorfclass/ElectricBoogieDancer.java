@@ -1,3 +1,5 @@
+package polimorfclass;
+
 public class ElectricBoogieDancer extends Dancer {
     public ElectricBoogieDancer(String name, int age) {
         super(name, age);
